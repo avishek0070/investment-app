@@ -1,69 +1,67 @@
-import { useState } from 'react';
-export default function UserInput() {
-  const [userInput, setUserInput] = useState({
-    initialInvestment: 10000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 10,
-  });
-function handleChange(inputIdentifier, newValue) {
-    setUserInput((prevUserInput) => {
-      return {
-        ...prevUserInput,
-        [inputIdentifier]: newValue,
-      };
-    });
+import {useState} from "react"
+import Result from "./Result"
+export default function UserInput()
+{
+  const [value1,value01]=useState(10000)
+  function initialInvestment(e)
+  {
+    value01(e.target.value)
+    // console.log(e.target.value)
   }
-return (
-    <section id="user-input">
-      <div className="input-group">
+  const [value2,value02]=useState(1200)
+  function AnnualInvestment(e)
+  {
+    value02(e.target.value)
+    // console.log(e.target.value)/
+  }
+  const [value3,value03]=useState(6)
+  function expectedReturn(e)
+  {
+    value03(e.target.value)
+    // console.log(e.target.value)
+  }
+  const [value4,value04]=useState(10)
+  function Duration(e)
+  {
+    value04(e.target.value)
+    // console.log(e.target.value)
+  }
+  return(
+    <section>
+      <div>
         <p>
           <label>Initial Investment</label>
           <input
-            type="number"
-            required
-            value={userInput.initialInvestment}
-            onChange={(event) =>
-              handleChange('initialInvestment', event.target.value)
-            }
-          />
-        </p>
-        <p>
+          type="number"
+          required
+          value={value1}
+          onChange={initialInvestment}/>
           <label>Annual Investment</label>
           <input
-            type="number"
-            required
-            value={userInput.annualInvestment}
-            onChange={(event) =>
-              handleChange('annualInvestment', event.target.value)
-            }
-          />
-        </p>
-      </div>
-      <div className="input-group">
+          type="number"
+          required
+          value={value2}
+          onChange={AnnualInvestment}/>
+          </p>
+        </div>
+        <div>
         <p>
           <label>Expected Return</label>
           <input
-            type="number"
-            required
-            value={userInput.expectedReturn}
-            onChange={(event) =>
-              handleChange('expectedReturn', event.target.value)
-            }
-          />
-        </p>
-        <p>
+          type="number"
+          required
+          value={value3}
+          onChange={expectedReturn}/>
           <label>Duration</label>
           <input
-            type="number"
-            required
-            value={userInput.duration}
-            onChange={(event) =>
-              handleChange('duration', event.target.value)
-            }
-          />
-        </p>
-      </div>
-    </section>
-  );
+          type="number"
+          required
+          value={value4}
+          onChange={Duration}/>
+          </p>
+          </div>
+          <Result value1={parseInt(value1)} value2={parseInt(value2)} value3={parseInt(value3)} value4={parseInt(value4)} /> 
+      </section>
+  )
 }
+
